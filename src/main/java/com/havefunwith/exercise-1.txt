@@ -1,0 +1,2 @@
+Find the square of a given number (single-value)
+Display the multiplication table of a given number (list)

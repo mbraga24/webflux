@@ -1,0 +1,3 @@
+GET: Find the square of a given number (single-value -> Mono)
+GET: Display the multiplication table of a given number (list -> Flux)
+POST: Mutiply(a, b)
