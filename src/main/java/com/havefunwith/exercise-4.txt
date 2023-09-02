@@ -1,0 +1,6 @@
+Input range is 10-20 -> return the response
+Else 400 Bab Request
+Note:
+    - No exception
+    - No error signal
+    - No ControllerAdvice / RestControllerAdvice

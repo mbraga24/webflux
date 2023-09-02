@@ -4,6 +4,7 @@ import com.havefunwith.dto.Response;
 import com.havefunwith.exception.exceptions.InputValidationException;
 import com.havefunwith.service.ReactiveMathService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -34,6 +35,15 @@ public class ReactiveMathValidationController {
                 })
                 .cast(Integer.class)
                 .flatMap(i -> reactiveMathService.findSquare(i));
+    }
+
+    @GetMapping("square/{input}/pipeline-flow")
+    public Mono<ResponseEntity<Response>> pipelineFlow(@PathVariable int input) {
+        return Mono.just(input)
+                .filter(i -> i >= 10 && i <= 20)
+                .flatMap(i -> reactiveMathService.findSquare(i))
+                .map(i -> ResponseEntity.ok(i))
+                .defaultIfEmpty(ResponseEntity.badRequest().build());
     }
 
 }
